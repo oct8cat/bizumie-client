@@ -1,0 +1,20 @@
+{
+  "name": "eek-client",
+  "dependencies": {
+    "apollo-client-preset": "^1.0.6",
+    "graphql": "^0.12.3",
+    "graphql-tag": "^2.6.1",
+    "ramda": "^0.25.0",
+    "react": "^16.2.0",
+    "react-apollo": "^2.0.4",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.1.0",
+    "semantic-ui-react": "^0.77.2"
+  },
+  "scripts": {
+    "start": "PORT=8000 react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

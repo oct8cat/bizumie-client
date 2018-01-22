@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [ -z $SERVER_URL ]; then
+  echo "SERVER_URL required" >&2;
+  exit 1;
+fi
+
+sed -ie "s#http://localhost:3000#$SERVER_URL#g" build/config.js
+nginx -g 'daemon off;'
