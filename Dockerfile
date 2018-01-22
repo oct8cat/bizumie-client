@@ -10,7 +10,7 @@ RUN apt-get install -y nodejs
 WORKDIR /etc/nginx/conf.d
 COPY etc/nginx.conf default.conf
 
-WORKDIR /opt/eek-client
+WORKDIR /opt/bizumie-client
 COPY package.json package-lock.json ./
 RUN npm install
 COPY . .

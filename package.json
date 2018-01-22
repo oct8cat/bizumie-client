@@ -1,5 +1,5 @@
 {
-  "name": "eek-client",
+  "name": "bizumie-client",
   "dependencies": {
     "apollo-client-preset": "^1.0.6",
     "graphql": "^0.12.3",
