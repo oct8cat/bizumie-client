@@ -4,6 +4,7 @@
     "apollo-client-preset": "^1.0.6",
     "graphql": "^0.12.3",
     "graphql-tag": "^2.6.1",
+    "prop-types": "^15.6.1",
     "ramda": "^0.25.0",
     "react": "^16.2.0",
     "react-apollo": "^2.0.4",
@@ -15,6 +16,18 @@
     "start": "PORT=8000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint .",
+    "fix": "prettier --no-semi --single-quote --arrow-parens=always --write './**/*.js'",
+    "clean": "rm -rf build"
+  },
+  "devDependencies": {
+    "eslint": "^4.18.2",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "prettier": "^1.11.1",
+    "standard": "^11.0.0"
   }
 }
