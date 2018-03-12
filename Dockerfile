@@ -1,6 +1,6 @@
 FROM nginx
 
-ENV SERVER_URL http://sever.bizumie.redroach.es
+ENV SERVER_URL http://server.bizumie.redroach.es
 ENV OAUTH_URL http://oauth.bizumie.redroach.es
 
 RUN apt-get update
