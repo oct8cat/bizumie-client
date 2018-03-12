@@ -1,18 +1,28 @@
 const React = require('react')
-const { Container } = require('semantic-ui-react')
+const {
+  BrowserRouter: Router,
+  Route,
+  Switch,
+  Redirect
+} = require('react-router-dom')
 const { ApolloProvider, createApolloClient } = require('../apollo')
 const apolloClient = createApolloClient()
-const UploadList = require('./UploadList')
-const MainMenu = require('./MainMenu')
+const { getLogoutPageURL } = require('../env')
+
+const TokenPage = require('../pages/TokenPage')
+const IndexPage = require('../pages/IndexPage')
+const LogoutPage = require('../pages/LogoutPage')
 
 const Root = () => (
   <ApolloProvider client={apolloClient}>
-    <div>
-      <MainMenu />
-      <Container style={{ paddingTop: 64 }}>
-        <UploadList />
-      </Container>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/token/:token" component={TokenPage} />
+        <Route path={getLogoutPageURL()} component={LogoutPage} />
+        <Route path="/" component={IndexPage} />
+        <Redirect to="/" />
+      </Switch>
+    </Router>
   </ApolloProvider>
 )
 

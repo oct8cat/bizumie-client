@@ -1,6 +1,11 @@
 const React = require('react')
-const { Button, Menu } = require('semantic-ui-react')
-const { getSuccessURLTemplate } = require('../env')
+const { Dropdown, Button, Menu } = require('semantic-ui-react')
+const { Link } = require('react-router-dom')
+const {
+  getLogoutPageURL,
+  getOAuthURL,
+  getSuccessURLTemplate
+} = require('../env')
 const { graphql } = require('react-apollo')
 const { mainMenuQuery } = require('../queries')
 const PropTypes = require('prop-types')
@@ -11,13 +16,19 @@ const MainMenu = ({ data: { loading, me } }) => {
       <Menu.Menu position="right">
         <Menu.Item>
           {me ? (
-            me.displayName
+            <Dropdown text={me.displayName}>
+              <Dropdown.Menu>
+                <Dropdown.Item as={Link} to={getLogoutPageURL()}>
+                  Log out
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           ) : (
             <Button
               color="google plus"
               icon="google plus"
               as="a"
-              href={`http://bizumie.redroach.es:3001/google?successURLTemplate=${getSuccessURLTemplate()}`}
+              href={`${getOAuthURL()}/google?successURLTemplate=${getSuccessURLTemplate()}`}
             />
           )}
         </Menu.Item>
