@@ -3,12 +3,16 @@ const { Container } = require('semantic-ui-react')
 const { ApolloProvider, createApolloClient } = require('../apollo')
 const apolloClient = createApolloClient()
 const UploadList = require('./UploadList')
+const MainMenu = require('./MainMenu')
 
 const Root = () => (
   <ApolloProvider client={apolloClient}>
-    <Container style={{ paddingTop: 50 }}>
-      <UploadList />
-    </Container>
+    <div>
+      <MainMenu />
+      <Container style={{ paddingTop: 64 }}>
+        <UploadList />
+      </Container>
+    </div>
   </ApolloProvider>
 )
 

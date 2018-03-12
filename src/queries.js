@@ -9,3 +9,12 @@ exports.uploadsQuery = gql`
     }
   }
 `
+
+exports.mainMenuQuery = gql`
+  query MainMenuQuery {
+    me {
+      id
+      displayName
+    }
+  }
+`

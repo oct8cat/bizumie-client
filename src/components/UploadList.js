@@ -4,7 +4,7 @@ const { Card, Message } = require('semantic-ui-react')
 const UploadPlus = require('./UploadPlus')
 const { map } = require('ramda')
 const { uploadsQuery } = require('../queries')
-const { SERVER_URL } = require('../const')
+const { getServerURL } = require('../env')
 
 module.exports = graphql(uploadsQuery)(
   ({ data: { error, loading, ...data } }) => {
@@ -18,7 +18,7 @@ module.exports = graphql(uploadsQuery)(
             <Card
               key={upload.id}
               meta={{ content: upload.originalName, textAlign: 'center' }}
-              image={`${SERVER_URL}${upload.url}`}
+              image={`${getServerURL()}${upload.url}`}
             />
           ),
           data.uploads

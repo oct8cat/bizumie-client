@@ -1,7 +1,8 @@
 const React = require('react')
 const { Button } = require('semantic-ui-react')
-const { withApollo, ApolloClient } = require('react-apollo')
-const { UPLOAD_URL } = require('../const')
+const { withApollo } = require('react-apollo')
+const { ApolloClient } = require('apollo-client')
+const { getUploadURL } = require('../env')
 const { uploadsQuery } = require('../queries')
 const PropTypes = require('prop-types')
 
@@ -39,7 +40,7 @@ class UploadPlus extends React.Component {
   handleChange(e) {
     const { currentTarget } = e
     window
-      .fetch(UPLOAD_URL, {
+      .fetch(getUploadURL(), {
         method: 'POST',
         body: new window.FormData(currentTarget.parentNode)
       })
@@ -59,7 +60,7 @@ class UploadPlus extends React.Component {
   }
 }
 UploadPlus.propTypes = {
-  client: PropTypes.instanceOf(ApolloClient)
+  client: PropTypes.instanceOf(ApolloClient).isRequired
 }
 
 module.exports = withApollo(UploadPlus)
