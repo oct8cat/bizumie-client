@@ -1,7 +1,7 @@
 FROM nginx
 
-ENV SERVER_URL http://bizumie.redroach.es:3000
-ENV OAUTH_URL http://oauth.bizumie.redroach.es:3001
+ENV SERVER_URL http://sever.bizumie.redroach.es
+ENV OAUTH_URL http://oauth.bizumie.redroach.es
 
 RUN apt-get update
 RUN apt-get install -y curl gnupg
