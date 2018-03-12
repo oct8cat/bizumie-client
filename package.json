@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start":
-      "PORT=8000 REACT_APP_SERVER_URL=http://bizumie.redroach.es:3000 REACT_APP_OAUTH_URL=http://oauth.bizumie.redroach.es:3001 react-scripts start",
+      "PORT=8000 REACT_APP_SERVER_URL=http://server.bizumie.redroach.es REACT_APP_OAUTH_URL=http://oauth.bizumie.redroach.es react-scripts start",
     "start-local":
       "PORT=8000 REACT_APP_SERVER_URL=http://localhost:3000 REACT_APP_OAUTH_URL=http://localhost:3001 react-scripts start",
     "build": "react-scripts build",
