@@ -1,22 +1,21 @@
 const { ApolloClient } = require('apollo-client')
 const { ApolloProvider } = require('react-apollo')
-const { concat } = require('apollo-link')
+const { from } = require('apollo-link')
 const { HttpLink } = require('apollo-link-http')
+const { onError } = require('apollo-link-error')
 const { InMemoryCache } = require('apollo-cache-inmemory')
 const { getGraphQLURL } = require('./env')
-const { readToken } = require('./token')
+const { clearToken, readToken } = require('./token')
 
 exports.ApolloProvider = ApolloProvider
 
 exports.createApolloClient = () =>
-  new ApolloClient({
-    cache: createCache(),
-    link: createLink()
-  })
+  new ApolloClient({ cache: createCache(), link: createLink() })
 
 const createCache = () => new InMemoryCache()
 
-const createLink = () => concat(createAuthLink(), createHTTPLink())
+const createLink = () =>
+  from([createAuthLink(), createErrorLink(), createHTTPLink()])
 
 const createAuthLink = () => (op, next) => {
   const token = readToken()
@@ -27,3 +26,12 @@ const createAuthLink = () => (op, next) => {
 }
 
 const createHTTPLink = () => new HttpLink({ uri: getGraphQLURL() })
+
+const createErrorLink = () =>
+  onError((error, a, b, c) => {
+    const { networkError } = error
+    if (networkError && networkError.statusCode === 401) {
+      clearToken()
+      window.location.reload()
+    }
+  })
