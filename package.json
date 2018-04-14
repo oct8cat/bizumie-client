@@ -15,13 +15,13 @@
     "semantic-ui-react": "^0.77.2"
   },
   "scripts": {
-    "start": "PORT=8000 REACT_APP_SERVER_URL=http://server.bizumie.redroach.es REACT_APP_OAUTH_URL=http://oauth.bizumie.redroach.es react-scripts start",
-    "start-local": "PORT=8000 REACT_APP_SERVER_URL=http://localhost:3000 REACT_APP_OAUTH_URL=http://localhost:3001 react-scripts start",
+    "dev": "PORT=8000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint .",
-    "fix": "prettier --no-semi --single-quote --arrow-parens=always --write './**/*.js'",
+    "fix":
+      "prettier --no-semi --single-quote --arrow-parens=always --write './**/*.js'",
     "clean": "rm -rf build"
   },
   "devDependencies": {
